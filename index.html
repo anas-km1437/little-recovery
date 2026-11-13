@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something for You 🐰</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:'Nunito',sans-serif;
+    background:linear-gradient(145deg,#fff5f3,#fce8ed,#f8efff);
+    color:#795d70;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    color:#e5b2c9;
+    animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.2;transform:scale(.8)}
+    to{opacity:.9;transform:scale(1.2)}
+}
+
+.container{
+    position:relative;
+    width:min(90%,650px);
+    margin:auto;
+    padding:45px 0;
+    text-align:center;
+}
+
+.card{
+    background:rgba(255,255,255,.82);
+    border:1px solid white;
+    border-radius:30px;
+    padding:32px 25px;
+    box-shadow:0 15px 50px #b98aa51c;
+    margin-bottom:22px;
+    backdrop-filter:blur(10px);
+}
+
+.date{
+    display:inline-block;
+    background:#fff0f5;
+    color:#bd7896;
+    padding:9px 20px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+h1{
+    font-size:clamp(30px,7vw,43px);
+    color:#b87896;
+    margin:20px 0 10px;
+    line-height:1.2;
+}
+
+h2{
+    color:#b87896;
+    font-size:23px;
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.9;
+    font-size:15px;
+}
+
+.subtitle{color:#a78a9a}
+
+/* Full cute bunny */
+.bunny-scene{
+    margin:25px auto 20px;
+    width:210px;
+    height:200px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.bunny{
+    position:relative;
+    width:125px;
+    height:125px;
+    background:#fff;
+    border-radius:48% 48% 43% 43%;
+    box-shadow:0 10px 25px #cda4b833;
+    animation:float 3s ease-in-out infinite;
+}
+
+.ear{
+    position:absolute;
+    width:31px;
+    height:85px;
+    background:#fff;
+    border-radius:50% 50% 45% 45%;
+    top:-57px;
+    z-index:-1;
+    box-shadow:inset 0 0 0 2px #f5e7ec;
+}
+
+.ear:after{
+    content:"";
+    position:absolute;
+    width:13px;
+    height:59px;
+    background:#f6c6d7;
+    border-radius:50%;
+    left:9px;
+    top:12px;
+}
+
+.ear.left{left:24px;transform:rotate(-13deg)}
+.ear.right{right:24px;transform:rotate(13deg)}
+
+.eye{
+    position:absolute;
+    width:8px;
+    height:11px;
+    background:#68545e;
+    border-radius:50%;
+    top:51px;
+}
+
+.eye.left{left:39px}
+.eye.right{right:39px}
+
+.cheek{
+    position:absolute;
+    width:17px;
+    height:10px;
+    background:#ffc9d7;
+    border-radius:50%;
+    top:68px;
+}
+
+.cheek.left{left:18px}
+.cheek.right{right:18px}
+
+.nose{
+    position:absolute;
+    top:67px;
+    left:58px;
+    width:10px;
+    height:8px;
+    background:#e99db6;
+    border-radius:50%;
+}
+
+.mouth{
+    position:absolute;
+    top:75px;
+    left:59px;
+    width:9px;
+    height:8px;
+    border-bottom:2px solid #9a7787;
+    border-radius:50%;
+}
+
+.bow{
+    position:absolute;
+    top:8px;
+    right:5px;
+    font-size:25px;
+    z-index:2;
+    transform:rotate(15deg);
+}
+
+.carrot{
+    position:absolute;
+    bottom:12px;
+    right:8px;
+    font-size:39px;
+    transform:rotate(-25deg);
+    animation:float 2.5s infinite ease-in-out;
+}
+
+.flower{
+    position:absolute;
+    font-size:25px;
+}
+
+.flower.one{left:0;bottom:35px}
+.flower.two{right:0;top:20px}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-9px)}
+}
+
+.message{
+    text-align:left;
+    background:#fff7f9;
+    border-radius:22px;
+    padding:24px;
+    margin-top:20px;
+    line-height:2;
+}
+
+.message p{margin-bottom:13px}
+
+.signature{
+    color:#b87896;
+    font-weight:900;
+    text-align:right;
+    margin-top:18px;
+}
+
+.timeline{
+    text-align:left;
+    margin-top:23px;
+}
+
+.event{
+    display:flex;
+    gap:14px;
+    margin:20px 0;
+    align-items:center;
+}
+
+.dot{
+    min-width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    background:#f8e1eb;
+    border-radius:50%;
+    font-size:20px;
+}
+
+.event strong{
+    display:block;
+    color:#a76e8a;
+    margin-bottom:3px;
+}
+
+button{
+    border:0;
+    background:linear-gradient(135deg,#e8a9c2,#c78baa);
+    color:white;
+    font-family:inherit;
+    font-weight:900;
+    font-size:15px;
+    padding:14px 27px;
+    border-radius:40px;
+    cursor:pointer;
+    margin-top:20px;
+    box-shadow:0 7px 20px #d9a5bb55;
+    transition:.25s;
+}
+
+button:hover{transform:translateY(-3px)}
+
+.hidden{display:none}
+
+.surprise{
+    margin-top:22px;
+    padding:23px;
+    border-radius:22px;
+    background:#fff0f5;
+    animation:appear .6s ease;
+}
+
+@keyframes appear{
+    from{opacity:0;transform:translateY(15px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+.footer{
+    font-size:13px;
+    color:#b49baa;
+    margin-top:25px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<main class="container">
+
+<section class="card">
+
+    <span class="date">12 NOVEMBER ✨</span>
+
+    <div class="bunny-scene">
+        <span class="flower one">🌼</span>
+        <span class="flower two">✨</span>
+
+        <div class="bunny">
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+            <div class="bow">🎀</div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="cheek left"></div>
+            <div class="cheek right"></div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+        </div>
+
+        <div class="carrot">🥕</div>
+    </div>
+
+    <h1>A Little Something for You</h1>
+
+    <p class="subtitle">
+        A tiny celebration for a very special person.
+    </p>
+
+    <p style="margin-top:20px">
+        Some little moments deserve their own little celebration.
+        And this one definitely does. 🌷
+    </p>
+
+</section>
+
+
+<section class="card">
+
+    <h2>A Little Milestone 🌸</h2>
+
+    <p>
+        Every recovery has its little chapters,
+        and today marks the end of one of them.
+    </p>
+
+    <div class="timeline">
+
+        <div class="event">
+            <div class="dot">🌷</div>
+            <div>
+                <strong>One step at a time</strong>
+                A little patience and a lot of courage.
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="dot">🐰</div>
+            <div>
+                <strong>12 November</strong>
+                Goodbye, stitches!
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="dot">⭐</div>
+            <div>
+                <strong>New little beginnings</strong>
+                Here's to easier and happier days.
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="card">
+
+    <h2>A Message from Me 💌</h2>
+
+    <div class="message">
+
+        <p>Hey, Carlotta!</p>
+
+        <p>
+            Sooo, I made this little corner of the internet
+            just for you. ._.
+        </p>
+
+        <p>
+            I wanted to make something small to celebrate
+            this day, because even little steps forward
+            deserve to be celebrated.
+        </p>
+
+        <p>
+            I know the past days haven't always been easy,
+            and I just hope things get a little more comfortable
+            for you from now on.
+        </p>
+
+        <p>
+            I might ask a lot of questions sometimes,
+            or worry about little things, but that's just
+            my way of showing that I care.
+        </p>
+
+        <p>
+            And please remember:
+            you don't have to be talkative,
+            entertaining, or cheerful all the time.
+            You can simply be yourself.
+        </p>
+
+        <p>
+            I hope your foot feels better soon,
+            your worries become lighter,
+            and you have plenty of reasons to smile.
+        </p>
+
+        <p>
+            Take good care of yourself, okay?
+            You deserve all the gentle and happy things. ❤️
+        </p>
+
+        <div class="signature">
+            — Anas ._.
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="card">
+
+    <h2>Wait... the bunny has something! 🐰</h2>
+
+    <p>
+        Apparently, someone prepared a tiny reward.
+    </p>
+
+    <button onclick="revealSurprise()">
+        Open the little surprise 🎀
+    </button>
+
+    <div id="surprise" class="surprise hidden">
+
+        <div style="font-size:75px">🐇</div>
+
+        <h2>Official Bunny Award</h2>
+
+        <p>
+            This certificate is proudly awarded to
+            <strong>Carlotta</strong>
+            for making it through another little chapter
+            of recovery!
+        </p>
+
+        <div style="font-size:42px;margin:15px">🥕🌷🥕</div>
+
+        <p>
+            Your reward includes:
+        </p>
+
+        <p>
+            Unlimited carrots 🥕<br>
+            Peaceful days 🌸<br>
+            Happy little moments ✨<br>
+            And absolutely no homework from this bunny.
+        </p>
+
+        <p style="margin-top:15px">
+            P.S. The bunny thinks you're doing great.
+            The bunny is always right. ._.
+        </p>
+
+    </div>
+
+</section>
+
+<p class="footer">
+    Made with care, a little imagination, and one very cute bunny. 🐰
+</p>
+
+</main>
+
+<script>
+
+const stars = document.getElementById("stars");
+
+for(let i=0;i<45;i++){
+    const star=document.createElement("span");
+    star.className="star";
+    star.innerHTML=Math.random()>.5?"✦":"·";
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+    star.style.fontSize=(10+Math.random()*15)+"px";
+    star.style.animationDelay=Math.random()*3+"s";
+    stars.appendChild(star);
+}
+
+function revealSurprise(){
+    const surprise=document.getElementById("surprise");
+    surprise.classList.remove("hidden");
+    surprise.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+}
+
+</script>
+
+</body>
+</html>
